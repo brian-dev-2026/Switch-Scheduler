@@ -1,0 +1,40 @@
+{
+  "name": "power-scheduler",
+  "productName": "Power Scheduler",
+  "version": "1.0.0",
+  "description": "Schedule or instantly trigger shutdown, restart and sleep.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env DRY_RUN=1 electron .",
+    "icon": "node scripts/make-icon.js",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.powerscheduler.app",
+    "productName": "Power Scheduler",
+    "files": [
+      "src/**",
+      "assets/**"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "electron": "^44.7.2",
+    "electron-builder": "^26.15.3"
+  }
+}
